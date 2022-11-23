@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8080
   
 eureka:
   client:
@@ -17,6 +17,10 @@ spring:
         locator:
           enabled: true
       routes:
+        - id: categoria-service
+          uri: lb://categoria-service
+          predicates:
+            - Path=/categoria/**
         - id: empleado-service
           uri: lb://empleado-service
           predicates:
@@ -24,4 +28,17 @@ spring:
         - id: ingreso-service
           uri: lb://ingreso-service
           predicates:
-            - Path=/ingresos/**
+            - Path=/ingreso/**
+        - id: justificativo-service
+          uri: lb://justificativo-service
+          predicates:
+            - Path=/justificativo/**
+        - id: autorizacion-service
+          uri: lb://autorizacion-service
+          predicates:
+            - Path=/autorizacion/**
+        - id: planilla-service
+          uri: lb://planilla-service
+          predicates:
+            - Path=/planilla/**
+            
